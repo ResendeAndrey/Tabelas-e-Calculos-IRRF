@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 // Pages
 
 import Home from '../pages/Home';
+import InputAdd from '../pages/InputAdd';
 import Page404 from '../pages/page404';
 
 const Routes = () => {

@@ -30,7 +30,7 @@ export const Container = styled.section`
   text-align: center;
 
   @media only screen and (min-width: 1100px) {
-    max-width: 1080px;
+    max-width: 1200px;
     width: 100%;
   }
   a {

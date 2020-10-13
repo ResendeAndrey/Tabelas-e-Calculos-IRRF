@@ -5,11 +5,14 @@ import { toast } from 'react-toastify';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 // Styles
 import { Container } from '../../styles/GlobalStyle';
-import { Table, Newemployer } from './styles';
+import { Table } from './styles';
 // JSON
 import data from '../../pessoas.json';
 // Components
 import TextIRRF from '../../components/TextIRRF';
+import TableHead from '../../components/TableHead'
+//Page
+import InputAdd from '../InputAdd'
 // Store
 import * as employerActions from '../../store/modules/employers/actions';
 
@@ -21,6 +24,14 @@ const Home = () => {
   const reduxEmployers = useSelector(
     (state) => state.employersReducer.employers.payload
   );
+
+  // input params useState
+  const [nome, setNome] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [salario, setSalario] = useState('');
+  const [desconto, setDesconto] = useState('');
+  const [dependentes, setDependentes] = useState('');
+
   // Pegando os dados iniciais do pessoas.json caso o Redux esteja vazio
   useEffect(() => {
     const response = data;
@@ -30,12 +41,6 @@ const Home = () => {
       setEmpolyers(reduxEmployers);
     }
   }, [reduxEmployers]);
-  // input params useState
-  const [nome, setNome] = useState('');
-  const [cpf, setCpf] = useState('');
-  const [salario, setSalario] = useState('');
-  const [desconto, setDesconto] = useState('');
-  const [dependentes, setDependentes] = useState('');
 
   // Função que calcula o desconto IRRF
   function calculateIRRF(salary, discount, dependentQtd) {
@@ -43,22 +48,28 @@ const Home = () => {
     const baseIR =
       parseFloat(salary) -
       parseFloat(discount) -
-      parseFloat(dependentValue) * parseFloat(dependentQtd);
+      (parseFloat(dependentValue) * parseFloat(dependentQtd));
+
     if (salary <= 1903.98) {
-      return baseIR * 0 * 0;
+      const discountIRRF = (baseIR * 0.00) - 0;
+      return discountIRRF;
     }
-    if (salary >= 1903.98 || salary <= 2826.65) {
-      return baseIR * 0.075 - 142.8;
+    if (salary >= 1903.98 && salary <= 2826.65) {
+      const discountIRRF = (baseIR * 0.075) - 142.8;
+      return discountIRRF
+    } 
+    else if (salary >= 2826.65 && salary <= 3751.05) {
+      const discountIRRF = (baseIR * 0.15) - 354.8;
+      return discountIRRF
     }
-    if (salary >= 2826.65 || salary <= 3751.05) {
-      return baseIR * 0.15 - 354.8;
+    else if (salary >= 3751.05 && salary <= 4664.68) {
+      const discountIRRF = (baseIR * 0.225) - 636.13;
+      return discountIRRF
     }
-    if (salary >= 3751.05 || salary <= 4664.68) {
-      return baseIR * 0.225 - 636.13;
-    }
-    if (salary >= 4664.68) {
-      return baseIR * 0.275 - 869.36;
-    }
+    else if (salary >= 4664.68) {
+      const discountIRRF = (baseIR * 0.27) - 869.36
+      return discountIRRF;
+    } else
     return 'Erro';
   }
   function handleClickEdit(employer) {
@@ -147,79 +158,18 @@ const Home = () => {
   return (
     <Container>
       <TextIRRF />
-      <h2>Adicionar um novo funcionário</h2>
-      <Newemployer>
-        <form onSubmit={handleSubmitEmployer}>
-          <div className="form-body">
-            <label htmlFor="nome">
-              Nome
-              <input
-                type="text"
-                value={nome}
-                onChange={(e) => setNome(e.target.value)}
-                placeholder="Nome"
-              />
-            </label>
-
-            <label htmlFor="cpf">
-              CPF
-              <input
-                type="text"
-                value={cpf}
-                onChange={(e) => setCpf(e.target.value)}
-                placeholder="CPF"
-              />
-            </label>
-            <label htmlFor="salario">
-              Salario
-              <input
-                type="text"
-                value={salario}
-                onChange={(e) => parseFloat(setSalario(e.target.value))}
-                placeholder="Salário Bruto"
-              />
-            </label>
-            <label htmlFor="desconto">
-              Desconto
-              <input
-                type="text"
-                value={desconto}
-                onChange={(e) => setDesconto(e.target.value)}
-                placeholder="Desconto"
-              />
-            </label>
-            <label htmlFor="dependentes">
-              Dependentes
-              <input
-                type="number"
-                value={dependentes}
-                onChange={(e) => setDependentes(e.target.value)}
-                placeholder="Dependentes"
-              />
-            </label>
-          </div>
-          <div>
-            <button className="form-button" type="submit">
-              {isEdit ? 'Salvar' : 'Adicionar'}
-            </button>
-          </div>
-        </form>
-      </Newemployer>
+      <InputAdd 
+      handleSubmitEmployer={handleSubmitEmployer} 
+      nome={nome} setNome={setNome} 
+      cpf={cpf} setCpf={setCpf} 
+      salario={salario} setSalario={setSalario} 
+      desconto={desconto} setDesconto={setDesconto} 
+      dependentes={dependentes} setDependentes={setDependentes} 
+      isEdit={isEdit}/>
       <Table>
         <h2>Seus Funcionários</h2>
         <table>
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>CPF</th>
-              <th>Salário</th>
-              <th>Desconto</th>
-              <th>Dependentes</th>
-              <th>Desconto IRPF</th>
-              <th>Editar</th>
-              <th>Deletar</th>
-            </tr>
-          </thead>
+        <TableHead />
           {employers ? (
             <tbody>
               {employers.map((employer, index) => (
