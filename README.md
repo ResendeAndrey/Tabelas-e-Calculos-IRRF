@@ -41,7 +41,6 @@ depois pressione a tecla 'a' no seu teclado (Se necessário)
 ```
 
 ### Versão de demonstração
-
-
+<img src="https://user-images.githubusercontent.com/44928849/96020914-1f801a80-0e25-11eb-8920-fa868b488f18.PNG"/>
 
 [Clique aqui para versão Online](https://tabelasecalculosirrf.netlify.app/)
