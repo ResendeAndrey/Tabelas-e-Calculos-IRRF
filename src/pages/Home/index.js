@@ -115,7 +115,7 @@ const Home = () => {
 
       const newEmployers = [...(employers || [])];
 
-      employers.map((res) => {
+      employers.forEach((res) => {
         if (res.cpf === newCPF) {
           formErrors = true;
           toast.error('CPF já cadastrado');
@@ -178,7 +178,7 @@ const Home = () => {
             <tbody>
               {/* map do employers para reproduzir a lista de funcionários */}
               {employers.map((employer, index) => (
-                <tr key={employer.nome}>
+                <tr key={employer.cpf}>
                   <td>{employer.nome}</td>
                   <td> {employer.cpf}</td>
                   <td> {employer.salario}</td>
