@@ -1,6 +1,6 @@
-## h2 Um projeto realizado com reactjs + redux que adiciona,atualiza,lista e exclui funcionários de uma tabela. Também realiza um calculo de desconto do IRRF de acordo com o salario e número de dependentes 
+##  Um projeto realizado com reactjs + redux que adiciona,atualiza,lista e exclui funcionários de uma tabela. Também realiza um calculo de desconto do IRRF de acordo com o salario e número de dependentes 
 
-## h3 Faça o Download e execute os comandos abaixo: 
+###  Faça o Download e execute os comandos abaixo: 
 
 ```
 npm i -> para instalar todas as dependências do projeto
@@ -8,7 +8,7 @@ npm start -> para iniciar o projeto
 ```
 A partir desse ponto o projeto vai estar rodando em http://localhost:3000
 
-## h3 Dependências usadas no projeto: 
+###  Dependências usadas no projeto: 
 
 ```
 react-icons: 3.11.0
@@ -24,14 +24,14 @@ styled-components: 5.2.0
 ```
 
 
-## h3 Para testes com o Jest + enzyme digite o comando abaixo:
+###  Para testes com o Jest + enzyme digite o comando abaixo:
 
 ```
 npm test
 depois pressione a tecla 'a' no seu teclado (Se necessário)
 ```
 
-## h3 Orientações
+###  Orientações
 
 ```
  -  O Campo CPF deve ser preenchido sem os pontos (. e -)
@@ -40,7 +40,7 @@ depois pressione a tecla 'a' no seu teclado (Se necessário)
  -  O botão excluir faz o delete da linha desejada
 ```
 
-## h3 Versão de demonstração
+### Versão de demonstração
 
 
 
