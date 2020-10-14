@@ -40,6 +40,7 @@ depois pressione a tecla 'a' no seu teclado (Se necessário)
  -  O campo desconto IRRF é calculado pela função CalculateIRRF()
  -  O botão editar retorna o valor do campo para o input e após as alterações basta clicar em salvar 
  -  O botão excluir faz o delete da linha desejada
+ -  Utilizado Mobile first no projeto
 ```
 
 ### Versão de demonstração
