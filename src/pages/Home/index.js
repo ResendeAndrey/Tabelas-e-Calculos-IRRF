@@ -18,9 +18,9 @@ import * as employerActions from '../../store/modules/employers/actions';
 
 const Home = () => {
   const [employers, setEmpolyers] = useState([]);
-  const dispatch = useDispatch();
   const [isEdit, setIsEdit] = useState(false);
-
+  
+  const dispatch = useDispatch();
   const reduxEmployers = useSelector(
     (state) => state.employersReducer.employers.payload
   );
@@ -72,6 +72,7 @@ const Home = () => {
     } else
     return 'Erro';
   }
+  // Função retorna valores do botao editar para a tela
   function handleClickEdit(employer) {
     setIsEdit(true);
     setNome(employer.nome);
@@ -80,13 +81,14 @@ const Home = () => {
     setDesconto(employer.desconto);
     setDependentes(employer.dependentes);
   }
-
+  // Função deleta funcionário desejado
   function handleClickDelete(index) {
     const newEmployers = [...employers];
     newEmployers.splice(index, 1);
     setEmpolyers(newEmployers);
     dispatch(employerActions.deleteEmployerRequest(newEmployers));
   }
+  // Função adiciona novo funcionário ou edita um já existente
   function handleSubmitEmployer(e) {
     e.preventDefault();
     let formErrors = false;
@@ -158,6 +160,7 @@ const Home = () => {
   return (
     <Container>
       <TextIRRF />
+      {/* Input de adicionar ou editar funcionários */}
       <InputAdd 
       handleSubmitEmployer={handleSubmitEmployer} 
       nome={nome} setNome={setNome} 
@@ -170,8 +173,10 @@ const Home = () => {
         <h2>Seus Funcionários</h2>
         <table>
         <TableHead />
+        {/* Aqui verifica se o employers ta vazio ou não */}
           {employers ? (
             <tbody>
+              {/* map do employers para reproduzir a lista de funcionários */}
               {employers.map((employer, index) => (
                 <tr key={employer.nome}>
                   <td>{employer.nome}</td>

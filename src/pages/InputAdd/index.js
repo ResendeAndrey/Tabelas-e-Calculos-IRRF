@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container } from '../../styles/GlobalStyle';
 
 import {Newemployer} from './styles'
 
