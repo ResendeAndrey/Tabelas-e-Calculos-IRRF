@@ -1,4 +1,6 @@
-##  Um projeto realizado com reactjs + redux que adiciona,atualiza,lista e exclui funcionários de uma tabela. Também realiza um calculo de desconto do IRRF de acordo com o salario e número de dependentes 
+## Tabelas e Calculos IRRF
+
+Um projeto realizado com reactjs + redux que adiciona,atualiza,lista e exclui funcionários de uma tabela. Também realiza um calculo de desconto do IRRF de acordo com o salario e número de dependentes 
 
 ###  Faça o Download e execute os comandos abaixo: 
 
