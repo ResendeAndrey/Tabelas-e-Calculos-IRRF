@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 // Pages
 
 import Home from '../pages/Home';
-import Page404 from '../pages/Page404/index';
+import Page404 from '../pages/Page404/'
 
 const Routes = () => {
   return (
